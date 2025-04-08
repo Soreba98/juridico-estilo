@@ -1,0 +1,108 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0">
+  <info>
+    <title>Estilo Jurídico Español - Validado</title>
+    <id>http://www.zotero.org/styles/estilo-juridico-espanol-validado</id>
+    <link href="http://www.zotero.org/styles/estilo-juridico-espanol-validado" rel="self"/>
+    <author>
+      <name>Adaptado por ChatGPT</name>
+    </author>
+    <category citation-format="note"/>
+    <category field="law"/>
+    <summary>Estilo de citación jurídica española con diferenciación de libros, artículos, capítulos y webs.</summary>
+    <updated>2025-04-08T00:00:00+00:00</updated>
+  </info>
+
+  <citation>
+    <layout delimiter=". " suffix=".">
+      <choose>
+        <!-- Libro -->
+        <if type="book">
+          <names variable="author">
+            <name and="text" delimiter=", " name-as-sort-order="all" text-case="uppercase"/>
+          </names>
+          <text variable="title" font-style="italic" suffix=", " />
+          <text variable="edition" suffix="ed., " />
+          <text variable="publisher-place" suffix=", " />
+          <text variable="publisher" suffix=", " />
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+          <text variable="page" prefix=", p. "/>
+        </if>
+
+        <!-- Capítulo -->
+        <else-if type="chapter">
+          <names variable="author">
+            <name and="text" delimiter=", " name-as-sort-order="all" text-case="uppercase"/>
+          </names>
+          <text variable="title" quotes="true" suffix=", en " />
+          <text variable="container-title" font-style="italic" suffix=", " />
+          <names variable="editor">
+            <label form="short" prefix="coord. por " suffix=" " />
+            <name and="text" delimiter=", " name-as-sort-order="all" text-case="uppercase"/>
+          </names>
+          <text variable="publisher-place" suffix=", " />
+          <text variable="publisher" suffix=", " />
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+          <text variable="page" prefix=", p. "/>
+        </else-if>
+
+        <!-- Artículo -->
+        <else-if type="article-journal">
+          <names variable="author">
+            <name and="text" delimiter=", " name-as-sort-order="all" text-case="uppercase"/>
+          </names>
+          <text variable="title" quotes="true" suffix=", " />
+          <text variable="container-title" font-style="italic" suffix=", " />
+          <text variable="volume" suffix=", " />
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+          <text variable="page" prefix=", p. "/>
+        </else-if>
+
+        <!-- Página web -->
+        <else-if type="webpage">
+          <names variable="author">
+            <name and="text" delimiter=", " name-as-sort-order="all" text-case="uppercase"/>
+          </names>
+          <text variable="title" quotes="true" suffix=", " />
+          <text variable="URL" prefix="disponible en: " suffix=", " />
+          <date variable="accessed" prefix="consulta: ">
+            <date-part name="day" suffix=" de " />
+            <date-part name="month" suffix=" de " />
+            <date-part name="year" />
+          </date>
+        </else-if>
+
+        <!-- Otros (ej: jurisprudencia manual) -->
+        <else>
+          <text variable="title" text-case="uppercase" suffix=", " />
+          <text variable="container-title" suffix=", " />
+          <date variable="issued">
+            <date-part name="year"/>
+          </date>
+          <text variable="page" prefix=", p. "/>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+
+  <bibliography>
+    <layout suffix=".">
+      <names variable="author">
+        <name and="text" delimiter=", " name-as-sort-order="all" text-case="uppercase"/>
+      </names>
+      <text variable="title" font-style="italic" suffix=", " />
+      <text variable="publisher-place" suffix=", " />
+      <text variable="publisher" suffix=", " />
+      <date variable="issued">
+        <date-part name="year"/>
+      </date>
+    </layout>
+  </bibliography>
+</style>
